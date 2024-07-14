@@ -18,7 +18,7 @@ const errorHandler = (err)=> {
             errors[properties.path] = properties.message;
         }); 
     }
-    return(errors)
+    return errors;
 }
 module.exports.signup_get = (req, res) => {
     res.render('signup')

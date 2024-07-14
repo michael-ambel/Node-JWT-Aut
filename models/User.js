@@ -19,6 +19,18 @@ const userSchema = new mongoose.Schema({
     }
 });
 
+//mongoose hook fire function after user created/saved
+userSchema.post('save', (userData, next)=>{
+    console.log("new user registerd", userData);
+    next();
+})
+
+//mongoose hook fire function befor user created/saved
+userSchema.pre('save', function(next){
+    console.log('this user is about to register', this);
+    next();
+})
+
 const User = mongoose.model('user', userSchema);
 
 module.exports = User;
