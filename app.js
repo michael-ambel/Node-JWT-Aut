@@ -27,24 +27,3 @@ mongoose.connect(uri)
 app.get('/', (req, res) => res.render('home'));
 app.get('/smoothies', (req, res) => res.render('smoothies'));
 app.use(authRoute);
-
-
-//cookies
-//create
-app.get('/set-cookies', (req, res) => {
-  // res.setHeader('set-cookie', 'newUser=true'); //normal method
-  res.cookie('newUser', false) //by using cookie-parser
-  res.cookie('isApple', true, {maxAge: 1000*60*60*24, secure: true})
-  res.cookie('isOrange', true, {maxAge: 1000*60*60*24, httpOnly: true})
-  res.send('you got a cookies!')
-})
-
-//read
-app.get('/read-cookies', (req, res) => {
-  const cookies = req.cookies;
-  console.log(cookies.newUser);
-  console.log(cookies);
-
-  res.json(cookies);
-})
-
